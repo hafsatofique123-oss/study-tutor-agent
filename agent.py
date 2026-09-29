@@ -1,3 +1,4 @@
+```python
 from crewai import Agent, Crew, Task, Process, Memory
 
 from config import get_llm
@@ -42,8 +43,6 @@ def create_study_tutor():
             calculator,
             create_study_plan,
         ],
-
-        memory=memory,
 
         verbose=True,
 
@@ -117,3 +116,5 @@ def run_study_tutor(
     result = crew.kickoff()
 
     return result
+```
+
