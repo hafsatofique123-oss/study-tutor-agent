@@ -23,18 +23,20 @@ st.markdown(
     """
     <style>
 
-    /* MAIN BACKGROUND */
+    /* ========================================================
+       MAIN APP BACKGROUND
+    ======================================================== */
 
     .stApp {
         background:
             radial-gradient(
                 circle at 10% 10%,
-                rgba(0, 212, 255, 0.12),
+                rgba(0, 212, 255, 0.14),
                 transparent 30%
             ),
             radial-gradient(
                 circle at 90% 20%,
-                rgba(88, 80, 255, 0.12),
+                rgba(99, 102, 241, 0.14),
                 transparent 30%
             ),
             radial-gradient(
@@ -48,16 +50,20 @@ st.markdown(
     }
 
 
-    /* MAIN CONTAINER */
+    /* ========================================================
+       MAIN CONTAINER
+    ======================================================== */
 
     .block-container {
+        max-width: 1250px;
         padding-top: 2rem;
         padding-bottom: 3rem;
-        max-width: 1250px;
     }
 
 
-    /* SIDEBAR */
+    /* ========================================================
+       SIDEBAR
+    ======================================================== */
 
     section[data-testid="stSidebar"] {
         background:
@@ -70,16 +76,19 @@ st.markdown(
         border-right: 1px solid rgba(0, 212, 255, 0.18);
     }
 
+
     section[data-testid="stSidebar"] h2,
     section[data-testid="stSidebar"] h3 {
         color: #ffffff;
     }
 
 
-    /* HERO */
+    /* ========================================================
+       HERO
+    ======================================================== */
 
     .hero {
-        padding: 2rem;
+        padding: 2.2rem;
         border-radius: 24px;
         margin-bottom: 1.5rem;
 
@@ -93,14 +102,14 @@ st.markdown(
         border: 1px solid rgba(0, 212, 255, 0.22);
 
         box-shadow:
-            0 0 40px rgba(0, 212, 255, 0.06);
+            0 0 40px rgba(0, 212, 255, 0.07);
 
         backdrop-filter: blur(12px);
     }
 
 
     .hero-title {
-        font-size: clamp(2.2rem, 5vw, 4rem);
+        font-size: clamp(2.4rem, 5vw, 4rem);
         font-weight: 800;
         line-height: 1.05;
 
@@ -115,35 +124,37 @@ st.markdown(
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.7rem;
     }
 
 
     .hero-subtitle {
         color: #9ca9c7;
         font-size: 1.05rem;
-        max-width: 720px;
+        max-width: 760px;
         line-height: 1.7;
     }
 
 
-    /* BADGES */
+    /* ========================================================
+       BADGES
+    ======================================================== */
 
     .badge-container {
         display: flex;
         flex-wrap: wrap;
         gap: 0.6rem;
-        margin-top: 1.2rem;
+        margin-top: 1.3rem;
     }
 
 
     .badge {
-        padding: 0.45rem 0.8rem;
+        padding: 0.45rem 0.85rem;
         border-radius: 999px;
 
         background: rgba(0, 212, 255, 0.08);
 
-        border: 1px solid rgba(0, 212, 255, 0.2);
+        border: 1px solid rgba(0, 212, 255, 0.22);
 
         color: #8eeaff;
 
@@ -152,80 +163,107 @@ st.markdown(
     }
 
 
-    /* SECTION TITLES */
+    /* ========================================================
+       SECTION TITLES
+    ======================================================== */
 
     .section-title {
         color: #ffffff;
+
         font-size: 1.25rem;
+
         font-weight: 700;
 
-        margin-top: 1.5rem;
+        margin-top: 1.7rem;
         margin-bottom: 0.8rem;
     }
 
 
-    /* GLASS CARDS */
+    /* ========================================================
+       GLASS CARDS
+    ======================================================== */
 
     .glass-card {
-        padding: 1.2rem;
+        padding: 1.3rem;
+
         border-radius: 18px;
 
-        background: rgba(10, 20, 38, 0.65);
+        background:
+            rgba(10, 20, 38, 0.65);
 
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border:
+            1px solid rgba(255, 255, 255, 0.08);
 
         box-shadow:
             0 10px 35px rgba(0, 0, 0, 0.25);
 
         backdrop-filter: blur(15px);
+
+        min-height: 130px;
     }
 
 
     .card-title {
         color: #ffffff;
+
         font-weight: 700;
+
         font-size: 1rem;
 
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.5rem;
     }
 
 
     .card-text {
         color: #94a3b8;
+
         font-size: 0.88rem;
+
+        line-height: 1.6;
     }
 
 
-    /* INPUTS */
+    /* ========================================================
+       INPUTS
+    ======================================================== */
 
     textarea,
     input {
-        background-color: rgba(8, 16, 31, 0.8) !important;
-        color: #ffffff !important;
+        background-color:
+            rgba(8, 16, 31, 0.8) !important;
 
-        border: 1px solid rgba(0, 212, 255, 0.18) !important;
+        color:
+            #ffffff !important;
 
-        border-radius: 14px !important;
+        border:
+            1px solid rgba(0, 212, 255, 0.18) !important;
+
+        border-radius:
+            14px !important;
     }
 
 
     textarea:focus,
     input:focus {
-        border-color: #00d4ff !important;
+        border-color:
+            #00d4ff !important;
 
         box-shadow:
             0 0 15px rgba(0, 212, 255, 0.15) !important;
     }
 
 
-    /* BUTTON */
+    /* ========================================================
+       BUTTON
+    ======================================================== */
 
     .stButton > button {
         width: 100%;
 
         border-radius: 14px;
 
-        border: 1px solid rgba(0, 212, 255, 0.5);
+        border:
+            1px solid rgba(0, 212, 255, 0.5);
 
         background:
             linear-gradient(
@@ -240,7 +278,8 @@ st.markdown(
 
         padding: 0.75rem 1rem;
 
-        transition: all 0.25s ease;
+        transition:
+            all 0.25s ease;
 
         box-shadow:
             0 0 20px rgba(0, 174, 255, 0.18);
@@ -248,47 +287,62 @@ st.markdown(
 
 
     .stButton > button:hover {
-        transform: translateY(-2px);
+        transform:
+            translateY(-2px);
 
         box-shadow:
             0 0 30px rgba(0, 212, 255, 0.35);
 
-        border-color: #00d4ff;
+        border-color:
+            #00d4ff;
     }
 
 
-    /* SELECT BOX */
+    /* ========================================================
+       SELECT BOX
+    ======================================================== */
 
     div[data-baseweb="select"] > div {
-        background-color: rgba(8, 16, 31, 0.8);
+        background-color:
+            rgba(8, 16, 31, 0.8);
 
-        border-radius: 12px;
+        border-radius:
+            12px;
 
-        border: 1px solid rgba(0, 212, 255, 0.18);
+        border:
+            1px solid rgba(0, 212, 255, 0.18);
     }
 
 
-    /* RESPONSE */
+    /* ========================================================
+       RESPONSE HEADER
+    ======================================================== */
 
     .response-header {
         display: flex;
+
         align-items: center;
+
         gap: 0.7rem;
 
-        margin-top: 1.5rem;
+        margin-top: 1.8rem;
+
         margin-bottom: 1rem;
     }
 
 
     .response-icon {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+
+        height: 44px;
 
         display: flex;
+
         align-items: center;
+
         justify-content: center;
 
-        border-radius: 12px;
+        border-radius: 13px;
 
         background:
             linear-gradient(
@@ -300,27 +354,33 @@ st.markdown(
         box-shadow:
             0 0 20px rgba(0, 212, 255, 0.25);
 
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 
 
     .response-title {
         color: #ffffff;
+
         font-size: 1.3rem;
+
         font-weight: 700;
     }
 
 
-    /* STATUS CARDS */
+    /* ========================================================
+       STATUS CARDS
+    ======================================================== */
 
     .status-card {
         padding: 1rem;
 
         border-radius: 16px;
 
-        background: rgba(10, 20, 38, 0.7);
+        background:
+            rgba(10, 20, 38, 0.7);
 
-        border: 1px solid rgba(255, 255, 255, 0.07);
+        border:
+            1px solid rgba(255, 255, 255, 0.07);
 
         margin-bottom: 0.8rem;
     }
@@ -330,11 +390,13 @@ st.markdown(
         display: inline-block;
 
         width: 8px;
+
         height: 8px;
 
         border-radius: 50%;
 
-        background: #00ffb3;
+        background:
+            #00ffb3;
 
         box-shadow:
             0 0 10px #00ffb3;
@@ -345,11 +407,55 @@ st.markdown(
 
     .status-text {
         color: #cbd5e1;
+
         font-size: 0.85rem;
     }
 
 
-    /* FOOTER */
+    /* ========================================================
+       CHAT HISTORY
+    ======================================================== */
+
+    .history-card {
+        padding: 1rem;
+
+        border-radius: 16px;
+
+        background:
+            rgba(10, 20, 38, 0.55);
+
+        border:
+            1px solid rgba(0, 212, 255, 0.10);
+
+        margin-bottom: 0.8rem;
+    }
+
+
+    .history-label {
+        color: #00d4ff;
+
+        font-size: 0.75rem;
+
+        font-weight: 700;
+
+        text-transform: uppercase;
+
+        margin-bottom: 0.35rem;
+    }
+
+
+    .history-question {
+        color: #ffffff;
+
+        font-size: 0.9rem;
+
+        line-height: 1.5;
+    }
+
+
+    /* ========================================================
+       FOOTER
+    ======================================================== */
 
     .footer {
         text-align: center;
@@ -362,11 +468,14 @@ st.markdown(
 
         padding-top: 1.5rem;
 
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        border-top:
+            1px solid rgba(255, 255, 255, 0.06);
     }
 
 
-    /* MOBILE */
+    /* ========================================================
+       MOBILE
+    ======================================================== */
 
     @media (max-width: 768px) {
 
@@ -377,6 +486,7 @@ st.markdown(
 
         .hero {
             padding: 1.4rem;
+
             border-radius: 18px;
         }
 
@@ -386,6 +496,10 @@ st.markdown(
 
         .hero-subtitle {
             font-size: 0.95rem;
+        }
+
+        .glass-card {
+            margin-bottom: 1rem;
         }
 
     }
@@ -402,13 +516,13 @@ st.markdown(
 
 if "study_tutor" not in st.session_state:
 
-    with st.spinner("Initializing your AI tutor..."):
+    with st.spinner("Initializing your AI Study Tutor..."):
 
         try:
-            agent, memory = create_study_tutor()
 
-            st.session_state.study_tutor = agent
-            st.session_state.memory = memory
+            st.session_state.study_tutor = (
+                create_study_tutor()
+            )
 
         except Exception as e:
 
@@ -419,6 +533,11 @@ if "study_tutor" not in st.session_state:
             st.exception(e)
 
             st.stop()
+
+
+if "conversation_history" not in st.session_state:
+
+    st.session_state.conversation_history = []
 
 
 # ============================================================
@@ -455,7 +574,9 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
 
+
     st.markdown("### 🎯 Learning Settings")
+
 
     subject = st.selectbox(
         "Subject",
@@ -472,6 +593,7 @@ with st.sidebar:
         ],
     )
 
+
     level = st.selectbox(
         "Learning Level",
         [
@@ -481,7 +603,12 @@ with st.sidebar:
         ],
     )
 
+
     st.markdown("---")
+
+
+    st.markdown("### ⚙️ Tutor Status")
+
 
     st.markdown(
         """
@@ -495,30 +622,52 @@ with st.sidebar:
 
         </div>
 
-
         <div class="status-card">
 
             <span class="status-dot"></span>
 
             <span class="status-text">
-                CrewAI Memory
+                Conversation Memory
             </span>
 
         </div>
 
+        <div class="status-card">
+
+            <span class="status-dot"></span>
+
+            <span class="status-text">
+                Calculator Tool
+            </span>
+
+        </div>
 
         <div class="status-card">
 
             <span class="status-dot"></span>
 
             <span class="status-text">
-                Learning Tools
+                Study Plan Tool
             </span>
 
         </div>
         """,
         unsafe_allow_html=True,
     )
+
+
+    st.markdown("---")
+
+
+    if st.button(
+        "🗑️ Clear Conversation",
+        use_container_width=True,
+    ):
+
+        st.session_state.conversation_history = []
+
+        st.rerun()
+
 
     st.markdown(
         """
@@ -550,9 +699,10 @@ st.markdown(
         </div>
 
         <div class="hero-subtitle">
-            Meet your AI Study Tutor - an intelligent learning
-            companion that explains concepts, creates study plans,
-            helps you practice, and remembers your learning context.
+            Meet your AI Study Tutor - an intelligent
+            learning companion that explains concepts,
+            creates study plans, helps you practice,
+            and remembers your recent learning context.
         </div>
 
         <div class="badge-container">
@@ -592,7 +742,8 @@ with col1:
 
             <div class="card-text">
                 Understand difficult topics through
-                simple explanations and examples.
+                simple explanations, examples,
+                and clear step-by-step guidance.
             </div>
 
         </div>
@@ -612,8 +763,9 @@ with col2:
             </div>
 
             <div class="card-text">
-                Your tutor can use relevant learning
-                context from previous interactions.
+                Your recent questions and tutor
+                responses provide context for
+                your next learning request.
             </div>
 
         </div>
@@ -633,8 +785,9 @@ with col3:
             </div>
 
             <div class="card-text">
-                Test your understanding with practice
-                questions and study activities.
+                Practice concepts with examples,
+                questions, calculations, and
+                personalized study activities.
             </div>
 
         </div>
@@ -655,11 +808,15 @@ st.markdown(
 
 question = st.text_area(
     "Your question",
+
     placeholder=(
-        "Ask anything...\n\n"
-        "Example: Explain recursion in Python like I am a beginner."
+        "Ask your Study Tutor anything...\n\n"
+        "Example: Explain recursion in Python "
+        "like I am a beginner."
     ),
+
     height=180,
+
     label_visibility="collapsed",
 )
 
@@ -673,6 +830,10 @@ ask_button = st.button(
     use_container_width=True,
 )
 
+
+# ============================================================
+# RUN AGENT
+# ============================================================
 
 if ask_button:
 
@@ -692,13 +853,28 @@ if ask_button:
 
                 result = run_study_tutor(
                     study_tutor=st.session_state.study_tutor,
-                    memory=st.session_state.memory,
                     subject=subject,
                     level=level,
                     question=question,
+                    conversation_history=(
+                        st.session_state.conversation_history
+                    ),
                 )
 
+
+                # Save conversation memory
+
+                st.session_state.conversation_history.append(
+                    {
+                        "question": question,
+                        "answer": str(result),
+                    }
+                )
+
+
+                # =================================================
                 # RESPONSE HEADER
+                # =================================================
 
                 st.markdown(
                     """
@@ -717,17 +893,59 @@ if ask_button:
                     unsafe_allow_html=True,
                 )
 
+
+                # =================================================
                 # RESPONSE
+                # =================================================
 
                 st.markdown(str(result))
+
 
             except Exception as e:
 
                 st.error(
-                    "Something went wrong while asking the Study Tutor."
+                    "Something went wrong while asking "
+                    "the Study Tutor."
                 )
 
                 st.exception(e)
+
+
+# ============================================================
+# RECENT CONVERSATION
+# ============================================================
+
+if st.session_state.conversation_history:
+
+    st.markdown(
+        '<div class="section-title">🧠 Recent Learning Context</div>',
+        unsafe_allow_html=True,
+    )
+
+
+    recent_history = (
+        st.session_state.conversation_history[-3:]
+    )
+
+
+    for item in reversed(recent_history):
+
+        st.markdown(
+            f"""
+            <div class="history-card">
+
+                <div class="history-label">
+                    Student Question
+                </div>
+
+                <div class="history-question">
+                    {item["question"]}
+                </div>
+
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 # ============================================================
@@ -748,3 +966,4 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
