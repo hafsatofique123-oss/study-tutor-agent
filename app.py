@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 
 from agent import create_study_tutor, run_study_tutor
@@ -754,7 +753,6 @@ if ask_button:
 # ============================================================
 
 st.markdown(
-    """
     <div class="footer">
 
         Study Tutor AI · Built with Streamlit + CrewAI + Groq
@@ -764,7 +762,5 @@ st.markdown(
         Learn • Practice • Improve
 
     </div>
-    """,
     unsafe_allow_html=True,
 )
-```
