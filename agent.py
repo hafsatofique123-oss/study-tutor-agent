@@ -1,40 +1,31 @@
 ```python
-from crewai import Agent, Crew, Task, Process, Memory
+from crewai import Agent, Crew, Task, Process
 
 from config import get_llm
 from tools import calculator, create_study_plan
 
 
 def create_study_tutor():
-    """Create the Study Tutor Agent and its memory."""
+    """Create the Study Tutor Agent."""
 
     llm = get_llm()
-
-    memory = Memory(
-        llm=llm,
-        embedder={
-            "provider": "huggingface",
-            "config": {
-                "model_name": "sentence-transformers/all-MiniLM-L6-v2"
-            },
-        },
-    )
 
     study_tutor = Agent(
         role="Study Tutor Agent",
 
         goal=(
             "Help students understand academic topics clearly, "
-            "adapt explanations to their level, provide examples, "
-            "encourage practice, and give useful feedback."
+            "adapt explanations to their learning level, "
+            "provide useful examples, create study plans, "
+            "and encourage active learning."
         ),
 
         backstory=(
             "You are a patient and supportive academic tutor. "
             "You explain difficult concepts in simple language. "
-            "You adapt your explanations to the student's level "
-            "and encourage students to understand concepts instead "
-            "of simply memorizing answers."
+            "You adapt explanations to the student's level. "
+            "You use examples and practice questions to help "
+            "students understand concepts instead of memorizing them."
         ),
 
         llm=llm,
@@ -44,62 +35,85 @@ def create_study_tutor():
             create_study_plan,
         ],
 
-        verbose=True,
+        verbose=False,
 
         allow_delegation=False,
     )
 
-    return study_tutor, memory
+    return study_tutor
 
 
 def run_study_tutor(
     study_tutor,
-    memory,
     subject,
     level,
     question,
+    conversation_history=None,
 ):
-    """Run the Study Tutor Agent."""
+    """Run the Study Tutor Agent with conversation context."""
+
+    if conversation_history is None:
+        conversation_history = []
+
+    previous_context = ""
+
+    if conversation_history:
+
+        previous_context = "\n\nPrevious conversation:\n"
+
+        for item in conversation_history[-6:]:
+
+            previous_context += (
+                f"Student: {item['question']}\n"
+                f"Tutor: {item['answer']}\n\n"
+            )
 
     study_task = Task(
         description=f"""
-        Help the student with this request.
+You are helping a student learn.
 
-        Subject:
-        {subject}
+Subject:
+{subject}
 
-        Student Level:
-        {level}
+Student Learning Level:
+{level}
 
-        Student Question:
-        {question}
+Current Student Question:
+{question}
 
-        Instructions:
+{previous_context}
 
-        - Explain the topic according to the student's level.
-        - Use simple and clear language.
-        - Give an example when useful.
-        - Explain difficult terminology.
-        - Highlight important points.
-        - Use the Calculator Tool for calculations.
-        - Use the Study Plan Tool when a study plan is requested.
-        - Use relevant previous memory when available.
-        - Encourage active learning.
-        - Do not unnecessarily make the answer complicated.
+Instructions:
 
-        Format the response using these sections when appropriate:
+1. Answer the student's current question directly.
+2. Adapt the explanation to the student's level.
+3. Use simple and clear language.
+4. Explain difficult terminology.
+5. Give examples when useful.
+6. Use the Calculator Tool when calculations are required.
+7. Use the Study Plan Tool when the student requests a study plan.
+8. Use previous conversation context when it is relevant.
+9. Encourage active learning.
+10. Do not unnecessarily make the answer complicated.
+11. Do not invent facts.
+12. If the question is unclear, explain what information is needed.
 
-        ## Explanation
+When appropriate, structure the response using:
 
-        ## Example
+## Explanation
 
-        ## Key Points
+## Example
 
-        ## Practice
-        """,
+## Key Points
+
+## Practice
+
+Only include sections that are useful for the question.
+""",
 
         expected_output=(
-            "A clear, accurate and student-friendly educational response."
+            "A clear, accurate, concise and student-friendly "
+            "educational response."
         ),
 
         agent=study_tutor,
@@ -109,12 +123,12 @@ def run_study_tutor(
         agents=[study_tutor],
         tasks=[study_task],
         process=Process.sequential,
-        memory=memory,
-        verbose=True,
+        verbose=False,
     )
 
     result = crew.kickoff()
 
-    return result
+    return str(result)
 ```
+
 
