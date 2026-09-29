@@ -4,10 +4,12 @@ from config import get_llm
 from tools import calculator, create_study_plan
 
 
-def create_memory(llm):
-    """Create memory for the Study Tutor Agent."""
+def create_study_tutor():
+    """Create the Study Tutor Agent and its memory."""
 
-    return Memory(
+    llm = get_llm()
+
+    memory = Memory(
         llm=llm,
         embedder={
             "provider": "huggingface",
@@ -16,14 +18,6 @@ def create_memory(llm):
             },
         },
     )
-
-
-def create_study_tutor():
-    """Create the Study Tutor Agent."""
-
-    llm = get_llm()
-
-    memory = create_memory(llm)
 
     study_tutor = Agent(
         role="Study Tutor Agent",
@@ -59,39 +53,42 @@ def create_study_tutor():
     return study_tutor, memory
 
 
-def create_study_crew(student_input):
-    """Create the CrewAI crew for one study request."""
-
-    study_tutor, memory = create_study_tutor()
+def run_study_tutor(
+    study_tutor,
+    memory,
+    subject,
+    level,
+    question,
+):
+    """Run the Study Tutor Agent."""
 
     study_task = Task(
         description=f"""
-        Help the student with the following request:
+        Help the student with this request.
 
         Subject:
-        {student_input["subject"]}
+        {subject}
 
         Student Level:
-        {student_input["level"]}
+        {level}
 
         Student Question:
-        {student_input["question"]}
+        {question}
 
-        Follow these rules:
+        Instructions:
 
-        1. Explain the concept according to the student's level.
-        2. Use simple and clear language.
-        3. Give a practical or academic example when useful.
-        4. Highlight the most important points.
-        5. If the student asks for a calculation, use the Calculator Tool.
-        6. If the student asks for a study plan, use the Study Plan Tool.
-        7. If relevant, give a few practice questions.
-        8. If previous memory is relevant, use it to personalize
-           the explanation.
-        9. Do not make the explanation unnecessarily complicated.
-        10. Encourage the student to think and learn.
+        - Explain the topic according to the student's level.
+        - Use simple and clear language.
+        - Give an example when useful.
+        - Explain difficult terminology.
+        - Highlight important points.
+        - Use the Calculator Tool for calculations.
+        - Use the Study Plan Tool when a study plan is requested.
+        - Use relevant previous memory when available.
+        - Encourage active learning.
+        - Do not unnecessarily make the answer complicated.
 
-        Structure your response as:
+        Format the response using these sections when appropriate:
 
         ## Explanation
 
@@ -100,14 +97,10 @@ def create_study_crew(student_input):
         ## Key Points
 
         ## Practice
-
-        Only include sections that are useful for the student's request.
         """,
 
         expected_output=(
-            "A clear, accurate, student-friendly educational response "
-            "with explanations, examples, key points, and practice "
-            "when appropriate."
+            "A clear, accurate and student-friendly educational response."
         ),
 
         agent=study_tutor,
@@ -121,4 +114,6 @@ def create_study_crew(student_input):
         verbose=True,
     )
 
-    return crew
+    result = crew.kickoff()
+
+    return result
