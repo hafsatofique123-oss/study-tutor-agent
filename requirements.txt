@@ -1,4 +1,6 @@
 streamlit
 crewai
-sentence-transformers
 groq
+chromadb>=1.5.0
+pydantic>=2.7.0
+pydantic-settings>=2.0.0
