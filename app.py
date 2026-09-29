@@ -23,9 +23,7 @@ st.markdown(
     """
     <style>
 
-    /* -------------------------------------------------------
-       MAIN BACKGROUND
-    ------------------------------------------------------- */
+    /* MAIN BACKGROUND */
 
     .stApp {
         background:
@@ -45,13 +43,12 @@ st.markdown(
                 transparent 30%
             ),
             #050816;
+
         color: #f5f7ff;
     }
 
 
-    /* -------------------------------------------------------
-       REMOVE STREAMLIT DEFAULT TOP SPACE
-    ------------------------------------------------------- */
+    /* MAIN CONTAINER */
 
     .block-container {
         padding-top: 2rem;
@@ -60,9 +57,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       SIDEBAR
-    ------------------------------------------------------- */
+    /* SIDEBAR */
 
     section[data-testid="stSidebar"] {
         background:
@@ -81,9 +76,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       MAIN HERO
-    ------------------------------------------------------- */
+    /* HERO */
 
     .hero {
         padding: 2rem;
@@ -134,9 +127,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       BADGES
-    ------------------------------------------------------- */
+    /* BADGES */
 
     .badge-container {
         display: flex;
@@ -144,6 +135,7 @@ st.markdown(
         gap: 0.6rem;
         margin-top: 1.2rem;
     }
+
 
     .badge {
         padding: 0.45rem 0.8rem;
@@ -160,22 +152,19 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       SECTION TITLES
-    ------------------------------------------------------- */
+    /* SECTION TITLES */
 
     .section-title {
         color: #ffffff;
         font-size: 1.25rem;
         font-weight: 700;
+
         margin-top: 1.5rem;
         margin-bottom: 0.8rem;
     }
 
 
-    /* -------------------------------------------------------
-       GLASS CARDS
-    ------------------------------------------------------- */
+    /* GLASS CARDS */
 
     .glass-card {
         padding: 1.2rem;
@@ -196,8 +185,10 @@ st.markdown(
         color: #ffffff;
         font-weight: 700;
         font-size: 1rem;
+
         margin-bottom: 0.4rem;
     }
+
 
     .card-text {
         color: #94a3b8;
@@ -205,9 +196,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       STREAMLIT INPUTS
-    ------------------------------------------------------- */
+    /* INPUTS */
 
     textarea,
     input {
@@ -229,9 +218,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       BUTTON
-    ------------------------------------------------------- */
+    /* BUTTON */
 
     .stButton > button {
         width: 100%;
@@ -270,9 +257,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       SELECT BOX
-    ------------------------------------------------------- */
+    /* SELECT BOX */
 
     div[data-baseweb="select"] > div {
         background-color: rgba(8, 16, 31, 0.8);
@@ -283,9 +268,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       RESPONSE AREA
-    ------------------------------------------------------- */
+    /* RESPONSE */
 
     .response-header {
         display: flex;
@@ -328,9 +311,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       STATUS CARDS
-    ------------------------------------------------------- */
+    /* STATUS CARDS */
 
     .status-card {
         padding: 1rem;
@@ -368,9 +349,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       FOOTER
-    ------------------------------------------------------- */
+    /* FOOTER */
 
     .footer {
         text-align: center;
@@ -387,9 +366,7 @@ st.markdown(
     }
 
 
-    /* -------------------------------------------------------
-       MOBILE RESPONSIVENESS
-    ------------------------------------------------------- */
+    /* MOBILE */
 
     @media (max-width: 768px) {
 
@@ -435,7 +412,9 @@ if "study_tutor" not in st.session_state:
 
         except Exception as e:
 
-            st.error("Could not initialize the Study Tutor Agent.")
+            st.error(
+                "Could not initialize the Study Tutor Agent."
+            )
 
             st.exception(e)
 
@@ -454,6 +433,7 @@ with st.sidebar:
             padding: 1rem 0;
             margin-bottom: 1rem;
         ">
+
             <div style="
                 font-size: 1.7rem;
                 font-weight: 800;
@@ -469,6 +449,7 @@ with st.sidebar:
             ">
                 AI-powered learning companion
             </div>
+
         </div>
         """,
         unsafe_allow_html=True,
@@ -505,30 +486,35 @@ with st.sidebar:
     st.markdown(
         """
         <div class="status-card">
-            <div>
-                <span class="status-dot"></span>
-                <span class="status-text">
-                    Study Tutor Agent
-                </span>
-            </div>
+
+            <span class="status-dot"></span>
+
+            <span class="status-text">
+                Study Tutor Agent
+            </span>
+
         </div>
 
-        <div class="status-card">
-            <div>
-                <span class="status-dot"></span>
-                <span class="status-text">
-                    CrewAI Memory
-                </span>
-            </div>
-        </div>
 
         <div class="status-card">
-            <div>
-                <span class="status-dot"></span>
-                <span class="status-text">
-                    Learning Tools
-                </span>
-            </div>
+
+            <span class="status-dot"></span>
+
+            <span class="status-text">
+                CrewAI Memory
+            </span>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <span class="status-dot"></span>
+
+            <span class="status-text">
+                Learning Tools
+            </span>
+
         </div>
         """,
         unsafe_allow_html=True,
@@ -564,7 +550,7 @@ st.markdown(
         </div>
 
         <div class="hero-subtitle">
-            Meet your AI Study Tutor — an intelligent learning
+            Meet your AI Study Tutor - an intelligent learning
             companion that explains concepts, creates study plans,
             helps you practice, and remembers your learning context.
         </div>
@@ -588,7 +574,7 @@ st.markdown(
 
 
 # ============================================================
-# TOP INFORMATION CARDS
+# INFORMATION CARDS
 # ============================================================
 
 col1, col2, col3 = st.columns(3)
@@ -712,9 +698,7 @@ if ask_button:
                     question=question,
                 )
 
-                # ------------------------------------------------
                 # RESPONSE HEADER
-                # ------------------------------------------------
 
                 st.markdown(
                     """
@@ -733,9 +717,7 @@ if ask_button:
                     unsafe_allow_html=True,
                 )
 
-                # ------------------------------------------------
                 # RESPONSE
-                # ------------------------------------------------
 
                 st.markdown(str(result))
 
@@ -753,14 +735,16 @@ if ask_button:
 # ============================================================
 
 st.markdown(
+    """
     <div class="footer">
 
-        Study Tutor AI · Built with Streamlit + CrewAI + Groq
+        Study Tutor AI - Built with Streamlit + CrewAI + Groq
 
         <br><br>
 
-        Learn • Practice • Improve
+        Learn | Practice | Improve
 
     </div>
+    """,
     unsafe_allow_html=True,
 )
